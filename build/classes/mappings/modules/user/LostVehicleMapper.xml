@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="pers.hsc.evats.modules.user.mapper.LostVehicleMapper">
+
+	<sql id="Base_Column_List">
+	v.id,
+	v.lost_brand,
+	v.lost_tag,
+	v.lost_user_tag,
+	v.lost_status,
+	v.lost_describe,
+	v.lost_time,
+	v.back_time,
+	v.lost_user as "user.id",
+	u.realname as "user.realname"
+	</sql>
+
+	<select id="selectLostVehiclePage" resultType="LostVehicle">
+		select
+		<include refid="Base_Column_List" />
+		from user_vehicle_lost v
+		LEFT JOIN sys_user u on v.lost_user = u.id
+		<where>
+			${ew.sqlSegment}
+		</where>
+	</select>
+</mapper>

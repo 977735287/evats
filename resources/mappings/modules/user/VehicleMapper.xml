@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="pers.hsc.evats.modules.user.mapper.VehicleMapper">
+
+	<sql id="Base_Column_List">
+		v.id,
+		v.brand,
+		v.self_tag,
+		v.user_tag,
+		v.describe,
+		v.user_name,
+		v.user_phone,
+		v.user_email,
+		v.create_date,
+		v.user as "user.id",
+		u.realname as "user.realname",
+		u.username as "user.username"
+	</sql>
+
+	<select id="selectVehiclePage" resultType="Vehicle">
+		select
+		<include refid="Base_Column_List" />
+		from user_vehicle v
+		LEFT JOIN sys_user u on v.user = u.id
+		<where>
+			${ew.sqlSegment}
+		</where>
+	</select>
+</mapper>

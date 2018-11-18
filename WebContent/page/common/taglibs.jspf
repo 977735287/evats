@@ -1,0 +1,19 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+<%@taglib prefix="fns" uri="/tlds/evats-functions.tld"%>
+<%@taglib prefix="form" uri="/tlds/evats-form.tld"%>
+<%@taglib prefix="grid" uri="/tlds/evats-grid.tld"%>
+<%@taglib prefix="html" uri="/tlds/evats-html.tld"%>
+<%@taglib prefix="view" uri="/tlds/evats-view.tld"%>
+
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="adminPath" value="${pageContext.request.contextPath}${fns:getAdminUrlPrefix()}" />
+<c:set var="appPath" value="${pageContext.request.contextPath}"/>
+<c:set var="staticPath" value="${pageContext.request.contextPath}/static"/>
+
+<spring:message code="platform.name"  var="platformName"/>
+<spring:message code="platform.copyright"  var="platformCopyright"/>
+<spring:message code="platform.version"  var="platformVersion"/>

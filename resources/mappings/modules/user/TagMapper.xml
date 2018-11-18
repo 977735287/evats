@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pers.hsc.evats.modules.user.mapper.TagMapper">
+
+	<sql id="Base_Column_List">
+		t.id,
+		t.tag_num,
+		t.tag_brather_num,
+		t.tag_detail,
+		t.create_date
+	</sql>
+
+	<select id="selectTagPage" resultType="RfidTag">
+		select
+		<include refid="Base_Column_List" />
+		from user_tag t
+		LEFT JOIN sys_user u on t.create_by=u.id
+		<where>
+			${ew.sqlSegment}
+		</where>
+	</select>
+
+</mapper>
